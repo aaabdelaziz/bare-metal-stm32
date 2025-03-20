@@ -14,5 +14,8 @@
 
 
 // For Clock
-#define RCC_OFFSET    		  (0x21000UL)
-#define RCC_BASE 			  (PERIPH_BASE + RCC_OFFSET)
+#define RCC_OFFSET    		  (0x1000UL)
+#define RCC_BASE 			  (AHB1_PERIPH_BASE + RCC_OFFSET)
+
+
+//Enable the AHB2 peripheral
