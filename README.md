@@ -1,4 +1,4 @@
-# Bare Metal Device Drivers for Nucleo Board (STM32F0xx)
+# Bare Metal Device Drivers for Nucleo Board (STM32F09xx)
 
 ## Project Overview
 
