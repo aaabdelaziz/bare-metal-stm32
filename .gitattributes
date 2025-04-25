@@ -6,3 +6,10 @@
 # Prevent auto trimming of trailing spaces or tabs
 *.c -text
 *.h -text
+
+# Ignore build output from language stats
+Debug/** linguist-vendored
+Release/** linguist-vendored
+
+# Count linker script as C (optional)
+*.ld linguist-language=C
