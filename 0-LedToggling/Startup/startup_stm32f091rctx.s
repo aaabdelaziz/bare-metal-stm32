@@ -12,12 +12,13 @@
  ******************************************************************************
  * @attention
  *
- * Copyright (c) 2025 STMicroelectronics.
- * All rights reserved.
+ * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
+ * All rights reserved.</center></h2>
  *
- * This software is licensed under terms that can be found in the LICENSE file
- * in the root directory of this software component.
- * If no LICENSE file comes with this software, it is provided AS-IS.
+ * This software component is licensed by ST under BSD 3-Clause license,
+ * the "License"; You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at:
+ *                        opensource.org/licenses/BSD-3-Clause
  *
  ******************************************************************************
  */
@@ -57,7 +58,7 @@ defined in linker script */
 Reset_Handler:
   ldr   r0, =_estack
   mov   sp, r0          /* set stack pointer */
-/* Call the clock system initialization function.*/
+/* Call the clock system intitialization function.*/
   bl  SystemInit
 
 /* Copy the data segment initializers from flash to SRAM */
@@ -97,7 +98,7 @@ LoopFillZerobss:
   bl main
 
 LoopForever:
-  b LoopForever
+    b LoopForever
 
   .size Reset_Handler, .-Reset_Handler
 
@@ -124,6 +125,7 @@ Infinite_Loop:
 ******************************************************************************/
   .section .isr_vector,"a",%progbits
   .type g_pfnVectors, %object
+  .size g_pfnVectors, .-g_pfnVectors
 
 g_pfnVectors:
   .word _estack
@@ -174,7 +176,6 @@ g_pfnVectors:
   .word	USART3_4_5_6_7_8_IRQHandler           			/* USART3, USART4, USART5, USART6, USART7, USART8 global interrupt   */
   .word	CEC_CAN_IRQHandler                    			/* CEC and CAN global interrupt                                      */
   .word	USB_IRQHandler                        			/* USB global interrupt                                              */
-  .size g_pfnVectors, .-g_pfnVectors
 
 /*******************************************************************************
 *
