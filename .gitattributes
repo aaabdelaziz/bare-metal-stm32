@@ -11,5 +11,13 @@
 Debug/** linguist-vendored
 Release/** linguist-vendored
 
-# Count linker script as C (optional)
-*.ld linguist-language=C
+# Tell GitHub Linguist which folders are your own code
+Src/* linguist-language=C
+Inc/* linguist-language=C
+
+# Mark startup assembly as generated to reduce its weight
+Startup/* linguist-generated
+
+# Optional: exclude IDE/debug folders from language stats
+.metadata/* linguist-vendored
+.settings/* linguist-vendored
