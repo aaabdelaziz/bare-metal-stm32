@@ -1,0 +1,8 @@
+*.c text eol=lf
+*.h text eol=lf
+*.ld text eol=lf
+*.s text eol=lf
+
+# Prevent auto trimming of trailing spaces or tabs
+*.c -text
+*.h -text
