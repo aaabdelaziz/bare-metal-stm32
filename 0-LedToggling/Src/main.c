@@ -1,15 +1,9 @@
 
-// Peripherals Address Definitions
+#include<stm32f091rc_peripherals.h>
 
-#define PERIPHERAL_BASE 	(0x40000000UL)
-#define AHB2RERIF_OFFSET 	(0x08000000UL)
-#define AHB2RERIF_BASE      (PERIPHERAL_BASE + AHB2RERIF_OFFSET)
 
-#define AHB1RERIF_OFFSET 	(0x00020000UL)
-#define AHB1RERIF_BASE      (PERIPHERAL_BASE + AHB1RERIF_OFFSET)
+int main ()
+{
 
-#define GPIOA_OFFSET		(0x0000UL)
-#define GPIOA_BASE 			(AHB2RERIF_BASE+GPIOA_OFFSET)
-
-#define RCC_OFFSET			(0x00001000UL)
-#define RCC_BASE            (AHB1RERIF_BASE + RCC_OFFSET)
+  return 0;
+}
