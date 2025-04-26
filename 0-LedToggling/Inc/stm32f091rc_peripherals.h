@@ -79,9 +79,6 @@
     // Data Register to configure PIN value
     #define GPIOA_ODR_R_OFFSET	  (0x14UL)
 
-    //Set GPIOA-PA5 to output
-    #define ODR_OFFSET            (1U<<10) 
-
     /*------------------------------------------------------------------------------
     * Base Definitions:
     * These macros define register offsets relative to the base address.
