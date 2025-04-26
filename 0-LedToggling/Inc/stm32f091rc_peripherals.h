@@ -70,7 +70,10 @@
     #define NVIC_OFFSET           (0x0100UL)
     #define SCB_OFFSET            (0x0D00UL)
 
-    // GPIOA 
+    // GPIOA  registers offsets
+    // Enable registers offsets
+    #define AHB1EN_R_OFFSET     (0x14UL)
+
     // Mode Register to configure mode for every PIN
     #define GPIOA_MODE_R_OFFSET	  (0x00UL)
     // Data Register to configure PIN value
@@ -143,9 +146,6 @@
     #define NVIC_BASE           (SCS_BASE + NVIC_OFFSET)
     #define SCB_BASE            (SCS_BASE + SCB_OFFSET)
 
-    // Enable registers offsets
-    #define AHB1EN_R_OFFSET     (0x14UL)
-
     /*------------------------------------------------------------------------------
     * GPIOA Registers:
     * These macros define GPIOA registers operations.
@@ -160,8 +160,6 @@
     #define GPIOA_MODE_R      	(GPIOA_BASE + GPIOA_MODE_R_OFFSET)
     // GPIOA ODR register  (Data)
     #define GPIOA_ODR_R 	    (GPIOA_ODR + GPIOA_ODR_R_OFFSET)   
-
-
 
     //PIN5
     #define PIN5    			  (1U<<5)
