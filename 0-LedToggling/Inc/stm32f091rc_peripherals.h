@@ -158,8 +158,6 @@
     // GPIOA ODR register  (Data)
     #define GPIOA_ODR_R 	    (GPIOA_ODR + GPIOA_ODR_R_OFFSET)   
 
-    //PIN5
-    #define PIN5    			  (1U<<5)
-    #define LED_PIN_NUM           PIN5
+    #define LED_PIN_NUM         5
 
 #endif // STM32F091RC_PERIPHERALS_H
