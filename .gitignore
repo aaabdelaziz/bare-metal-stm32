@@ -20,3 +20,37 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+# Build output directories
+**/Debug/
+**/Release/
+
+# IDE metadata (can be large or user-specific)
+**/.metadata/
+**/.settings/
+
+# Object files and binaries
+*.o
+*.elf
+*.bin
+*.hex
+*.map
+*.lst
+
+# Backup and temporary files
+*~
+*.swp
+*.tmp
+*.bak
+
+# IDE project files (optional - include if your team uses same IDE)
+# Uncomment below if you want to ignore IDE-specific project settings:
+# .cproject
+# .project
+
+# Logs
+*.log
+
+# OS and editor-specific
+.DS_Store
+
