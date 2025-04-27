@@ -70,8 +70,14 @@
     #define NVIC_OFFSET           (0x0100UL)
     #define SCB_OFFSET            (0x0D00UL)
 
-    //Set GPIOA-PA5 to output
-    #define ODR_OFFSET            (1U<<10) 
+    // GPIOA  registers offsets
+    // Enable registers offsets
+    #define AHB1EN_R_OFFSET       (0x14UL)
+
+    // Mode Register to configure mode for every PIN
+    #define GPIOA_MODE_R_OFFSET	  (0x00UL)
+    // Data Register to configure PIN value
+    #define GPIOA_ODR_R_OFFSET	  (0x14UL)
 
     /*------------------------------------------------------------------------------
     * Base Definitions:
@@ -138,19 +144,18 @@
     #define SCB_BASE            (SCS_BASE + SCB_OFFSET)
 
     /*------------------------------------------------------------------------------
-    * GPIO Definitions:
-    * These macros define gpios operation.
-    * Used for register access in memory-mapped I/O operations.
+    * GPIOA Registers:
+    * These macros define GPIOA registers operations.
     *----------------------------------------------------------------------------*/
+    // Enable GPIOA clock
+    #define RCC_AHB1EN_R        (*(volatile unsigned int *)(RCC_BASE + AHB1EN_R_OFFSET))
+    #define GPIOAEN             (1U<<17)
 
-    // Mode Register (Define In/Out) 
-    #define GPIOA_MODER      	  (0x28000000UL)
 
-                           // Set Bit 10 to 1
-    #define GPIOA_ODR 			  (GPIOA_ODR + ODR_OFFSET)
-
-    // Enable GPIOA Clock
-    #define IOPA  				  (1U<<0)
+    // GPIOA MODE register (In/Out)
+    #define GPIOA_MODE_R      	(*(volatile unsigned int *)(GPIOA_BASE + GPIOA_MODE_R_OFFSET))
+    // GPIOA ODR register  (Data)
+    #define GPIOA_ODR_R 	    (*(volatile unsigned int *)(GPIOA_BASE + GPIOA_ODR_R_OFFSET))
 
     //PIN5
     #define PIN5    			  (1U<<5)
