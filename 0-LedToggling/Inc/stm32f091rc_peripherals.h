@@ -72,7 +72,7 @@
 
     // GPIOA  registers offsets
     // Enable registers offsets
-    #define AHB1EN_R_OFFSET     (0x14UL)
+    #define AHB1EN_R_OFFSET       (0x14UL)
 
     // Mode Register to configure mode for every PIN
     #define GPIOA_MODE_R_OFFSET	  (0x00UL)
@@ -148,16 +148,17 @@
     * These macros define GPIOA registers operations.
     *----------------------------------------------------------------------------*/
     // Enable GPIOA clock
-    #define RCC_AHB1EN_R        (RCC_BASE + AHB1EN_R_OFFSET)
+    #define RCC_AHB1EN_R        (*(volatile unsigned int *)(RCC_BASE + AHB1EN_R_OFFSET))
     #define GPIOAEN             (1U<<17)
 
-    #define GPIOA_BASE          (AHB1PERIPH_BASE + )
 
     // GPIOA MODE register (In/Out)
-    #define GPIOA_MODE_R      	(GPIOA_BASE + GPIOA_MODE_R_OFFSET)
+    #define GPIOA_MODE_R      	(*(volatile unsigned int *)(GPIOA_BASE + GPIOA_MODE_R_OFFSET))
     // GPIOA ODR register  (Data)
-    #define GPIOA_ODR_R 	    (GPIOA_ODR + GPIOA_ODR_R_OFFSET)   
+    #define GPIOA_ODR_R 	    (*(volatile unsigned int *)(GPIOA_BASE + GPIOA_ODR_R_OFFSET))
 
-    #define LED_PIN_NUM         5
+    //PIN5
+    #define PIN5    			  (1U<<5)
+    #define LED_PIN_NUM           PIN5
 
 #endif // STM32F091RC_PERIPHERALS_H
