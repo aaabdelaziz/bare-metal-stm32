@@ -1,6 +1,6 @@
 /*==============================================================================
  * File:        stm32f091rc_peripherals.h
- * Description: This file contain base addresses for most imortant peripherals in stm32f091rc MCU
+ * Description: This file contains base addresses for most imortant peripherals in stm32f091rc MCU
  * Author:      Ahmed Abdelaziz
  * Created:     25/04/2025
  * 
@@ -13,7 +13,8 @@
 #define STM32F091RC_PERIPHERALS_H
 
     #include <stdint.h> // for standard types
-
+    #include "stm32f091rc_gpioa.h"
+	#include "stm32f091rc_rcc.h"
     /*------------------------------------------------------------------------------
     * Offset Definitions:
     * These macros define register offsets relative to the base address.
@@ -86,79 +87,61 @@
     *----------------------------------------------------------------------------*/
 
     // Base addresses
-    #define FLASH_BASE          (0x08000000UL) // Flash memory
-    #define SRAM_BASE           (0x20000000UL) // SRAM
-    #define PERIPH_BASE         (0x40000000UL) // Peripheral base
+    #define FLASH_BASE             (0x08000000UL) // Flash memory
+    #define SRAM_BASE              (0x20000000UL) // SRAM
+    #define PERIPH_BASE            (0x40000000UL) // Peripheral base
     
     // Peripheral bus bases
-    #define APB1PERIPH_BASE     (PERIPH_BASE)
-    #define APB2PERIPH_BASE     (PERIPH_BASE + APB2PERIPH_OFFSET)
-    #define AHB1PERIPH_BASE     (PERIPH_BASE + AHB1PERIPH_OFFSET)
-    #define AHB2PERIPH_BASE     (PERIPH_BASE + AHB2PERIPH_OFFSET)
+    #define APB1PERIPH_BASE        (PERIPH_BASE)
+    #define APB2PERIPH_BASE        (PERIPH_BASE + APB2PERIPH_OFFSET)
+    #define AHB1PERIPH_BASE        (PERIPH_BASE + AHB1PERIPH_OFFSET)
+    #define AHB2PERIPH_BASE        (PERIPH_BASE + AHB2PERIPH_OFFSET)
 
     // AHB1 peripherals base
-    #define RCC_BASE            (AHB1PERIPH_BASE + RCC_OFFSET)              // Clock
-    #define FLASH_R_BASE        (AHB1PERIPH_BASE + FLASH_R_OFFSET)          
-    #define DMA_BASE            (AHB1PERIPH_BASE + DMA1_OFFSET)
-
-    // AHB2 peripherals base
-    #define GPIOA_BASE          (AHB2PERIPH_BASE + GPIOA_OFFSET)            
-    #define GPIOB_BASE          (AHB2PERIPH_BASE + GPIOB_OFFSET)
-    #define GPIOC_BASE          (AHB2PERIPH_BASE + GPIOC_OFFSET)
-    #define GPIOD_BASE          (AHB2PERIPH_BASE + GPIOD_OFFSET)
-    #define GPIOE_BASE          (AHB2PERIPH_BASE + GPIOE_OFFSET)
-    #define GPIOF_BASE          (AHB2PERIPH_BASE + GPIOF_OFFSET)
-
-    // APB1 peripherals base
-    #define TIM2_BASE           (APB1PERIPH_BASE + TIM2_OFFSET)
-    #define TIM3_BASE           (APB1PERIPH_BASE + TIM3_OFFSET)
-    #define TIM6_BASE           (APB1PERIPH_BASE + TIM6_OFFSET)
-    #define TIM7_BASE           (APB1PERIPH_BASE + TIM7_OFFSET)
-    #define TIM14_BASE          (APB1PERIPH_BASE + TIM14_OFFSET)
-    #define USART2_BASE         (APB1PERIPH_BASE + USART2_OFFSET)
-    #define USART3_BASE         (APB1PERIPH_BASE + USART3_OFFSET)
-    #define USART4_BASE         (APB1PERIPH_BASE + USART4_OFFSET)
-    #define USART5_BASE         (APB1PERIPH_BASE + USART5_OFFSET)
-    #define I2C1_BASE           (APB1PERIPH_BASE + I2C1_OFFSET)
-    #define I2C2_BASE           (APB1PERIPH_BASE + I2C2_OFFSET)
-    #define SPI2_BASE           (APB1PERIPH_BASE + SPI2_OFFSET)
-    #define DAC_BASE            (APB1PERIPH_BASE + DAC_OFFSET)
-
-    // APB2 peripherals base
-    #define SYSCFG_BASE         (APB2PERIPH_BASE + SYSCFG_OFFSET)
-    #define EXTI_BASE           (APB2PERIPH_BASE + EXTI_OFFSET)
-    #define USART1_BASE         (APB2PERIPH_BASE + USART1_OFFSET)
-    #define USART6_BASE         (APB2PERIPH_BASE + USART6_OFFSET)
-    #define USART7_BASE         (APB2PERIPH_BASE + USART7_OFFSET)
-    #define USART8_BASE         (APB2PERIPH_BASE + USART8_OFFSET)
-    #define SPI1_BASE           (APB2PERIPH_BASE + SPI1_OFFSET)
-    #define ADC_BASE            (APB2PERIPH_BASE + ADC_OFFSET)
-    #define TIM1_BASE           (APB2PERIPH_BASE + TIM1_OFFSET)
-    #define TIM15_BASE          (APB2PERIPH_BASE + TIM15_OFFSET)
-    #define TIM16_BASE          (APB2PERIPH_BASE + TIM16_OFFSET)
-    #define TIM17_BASE          (APB2PERIPH_BASE + TIM17_OFFSET)
+    #define RCC_BASE               (AHB1PERIPH_BASE + RCC_OFFSET)              // Clock
+    #define FLASH_R_BASE           (AHB1PERIPH_BASE + FLASH_R_OFFSET)          
+    #define DMA_BASE               (AHB1PERIPH_BASE + DMA1_OFFSET)
+   
+    // AHB2 peripherals base   
+    #define GPIOA_BASE             (AHB2PERIPH_BASE + GPIOA_OFFSET)            
+    #define GPIOB_BASE             (AHB2PERIPH_BASE + GPIOB_OFFSET)
+    #define GPIOC_BASE             (AHB2PERIPH_BASE + GPIOC_OFFSET)
+    #define GPIOD_BASE             (AHB2PERIPH_BASE + GPIOD_OFFSET)
+    #define GPIOE_BASE             (AHB2PERIPH_BASE + GPIOE_OFFSET)
+    #define GPIOF_BASE             (AHB2PERIPH_BASE + GPIOF_OFFSET)
+   
+    // APB1 peripherals base   
+    #define TIM2_BASE              (APB1PERIPH_BASE + TIM2_OFFSET)
+    #define TIM3_BASE              (APB1PERIPH_BASE + TIM3_OFFSET)
+    #define TIM6_BASE              (APB1PERIPH_BASE + TIM6_OFFSET)
+    #define TIM7_BASE              (APB1PERIPH_BASE + TIM7_OFFSET)
+    #define TIM14_BASE             (APB1PERIPH_BASE + TIM14_OFFSET)
+    #define USART2_BASE            (APB1PERIPH_BASE + USART2_OFFSET)
+    #define USART3_BASE            (APB1PERIPH_BASE + USART3_OFFSET)
+    #define USART4_BASE            (APB1PERIPH_BASE + USART4_OFFSET)
+    #define USART5_BASE            (APB1PERIPH_BASE + USART5_OFFSET)
+    #define I2C1_BASE              (APB1PERIPH_BASE + I2C1_OFFSET)
+    #define I2C2_BASE              (APB1PERIPH_BASE + I2C2_OFFSET)
+    #define SPI2_BASE              (APB1PERIPH_BASE + SPI2_OFFSET)
+    #define DAC_BASE               (APB1PERIPH_BASE + DAC_OFFSET)
+   
+    // APB2 peripherals base   
+    #define SYSCFG_BASE            (APB2PERIPH_BASE + SYSCFG_OFFSET)
+    #define EXTI_BASE              (APB2PERIPH_BASE + EXTI_OFFSET)
+    #define USART1_BASE            (APB2PERIPH_BASE + USART1_OFFSET)
+    #define USART6_BASE            (APB2PERIPH_BASE + USART6_OFFSET)
+    #define USART7_BASE            (APB2PERIPH_BASE + USART7_OFFSET)
+    #define USART8_BASE            (APB2PERIPH_BASE + USART8_OFFSET)
+    #define SPI1_BASE              (APB2PERIPH_BASE + SPI1_OFFSET)
+    #define ADC_BASE               (APB2PERIPH_BASE + ADC_OFFSET)
+    #define TIM1_BASE              (APB2PERIPH_BASE + TIM1_OFFSET)
+    #define TIM15_BASE             (APB2PERIPH_BASE + TIM15_OFFSET)
+    #define TIM16_BASE             (APB2PERIPH_BASE + TIM16_OFFSET)
+    #define TIM17_BASE             (APB2PERIPH_BASE + TIM17_OFFSET)
 
     // System Control Space base
-    #define SCS_BASE            (0xE000E000UL)
-    #define NVIC_BASE           (SCS_BASE + NVIC_OFFSET)
-    #define SCB_BASE            (SCS_BASE + SCB_OFFSET)
-
-    /*------------------------------------------------------------------------------
-    * GPIOA Registers:
-    * These macros define GPIOA registers operations.
-    *----------------------------------------------------------------------------*/
-    // Enable GPIOA clock
-    #define RCC_AHB1EN_R        (*(volatile unsigned int *)(RCC_BASE + AHB1EN_R_OFFSET))
-    #define GPIOAEN             (1U<<17)
-
-
-    // GPIOA MODE register (In/Out)
-    #define GPIOA_MODE_R      	(*(volatile unsigned int *)(GPIOA_BASE + GPIOA_MODE_R_OFFSET))
-    // GPIOA ODR register  (Data)
-    #define GPIOA_ODR_R 	    (*(volatile unsigned int *)(GPIOA_BASE + GPIOA_ODR_R_OFFSET))
-
-    //PIN5
-    #define PIN5    			  (1U<<5)
-    #define LED_PIN_NUM           PIN5
+    #define SCS_BASE               (0xE000E000UL)
+    #define NVIC_BASE              (SCS_BASE + NVIC_OFFSET)
+    #define SCB_BASE               (SCS_BASE + SCB_OFFSET)
 
 #endif // STM32F091RC_PERIPHERALS_H
