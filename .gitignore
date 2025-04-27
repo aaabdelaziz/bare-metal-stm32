@@ -53,4 +53,8 @@ TestResults.xml
 
 # OS and editor-specific
 .DS_Store
+Thumbs.db
 
+# Eclipse settings
+**/.cproject
+**/.project
