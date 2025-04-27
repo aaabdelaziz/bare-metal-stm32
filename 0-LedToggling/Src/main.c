@@ -17,6 +17,7 @@ int main ()
 	{
 		/* (3) Toggle PA5 */
 		GPIOA_ODR_R  ^= LED_PIN_NUM;
+    for(int i=0; i<100000;i++);
 	}
 
   return 0;
