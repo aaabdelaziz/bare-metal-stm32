@@ -5,7 +5,6 @@
 int main ()
 {
 
-
 	/* (1) Enable the peripheral clock of GPIOA */
 	RCC->AHBENR |= GPIOAEN;
 
