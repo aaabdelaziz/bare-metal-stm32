@@ -89,7 +89,7 @@
         volatile uint32_t CSR;        /*!< Control/status register                    (Offset: 0x24) */
         volatile uint32_t AHBRSTR;    /*!< AHB peripheral reset register              (Offset: 0x28) */
         volatile uint32_t CFGR2;      /*!< Clock configuration register 2             (Offset: 0x2C) */
-        volatile uint32_t CFGR3;      /*!< Clock configuration register 3             (Offset: 0x30) */
+        volatile uint32_t CFGR3;      /*!< Clock configuration register 3             (Offsudededet: 0x30) */
     } RCC_Type;
 
     // RCC Register
