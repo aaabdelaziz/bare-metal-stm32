@@ -4,28 +4,50 @@
 
 // Enable GPIOA clock
 #define GPIOAEN      	 (1U<<17)
+// Enable GPIOC clock
+#define GPIOCEN      	 (1U<<19)
 
-//PIN5 SET/REST
-#define LED_PIN_NUM_SET      (1U<<5)
-#define LED_PIN_NUM_REST   	 (1U<<21)
+#define LED_PIN 5
+#define BTN_PIN 13
+#define LED_ON (1U << LED_PIN)
+#define LED_OFF (1U << (LED_PIN + 16))
+#define BTN_MASK (1U << BTN_PIN)
+
+
+//Output: PIN5 SET/REST
+#define LED_PIN_NUM_SET      (1U<<LED_PIN)
+#define LED_PIN_NUM_REST   	 (1U<<(LED_PIN + 16))
+//Input Button: PIN13 
+#define BTN_PIN_NUM          (1U<<13)
 
 
 int main(void)
 {
 
+	//Enable GPIOA, GPIOC Clocks
 	RCC->AHBENR |= GPIOAEN;
+	RCC->AHBENR |= GPIOCEN;
 
-	GPIOA->MODER |= (1U<<10);
-	GPIOA->MODER &=~ (1U<<11);
+	// Configure PA5 as output
+	GPIOA->MODER &= ~(3U << (2 * LED_PIN));  // Clear MODER bits
+	GPIOA->MODER |=  (1U << (2 * LED_PIN));  // Set as output
 
-	while(1)
+	// Configure PC13 as input
+	GPIOC->MODER &= ~(3U << (2 * BTN_PIN));
+
+	//	// Optional: Enable pull-up on PC13
+	//	GPIOC->PUPDR &= ~(3U << (2 * BTN_PIN));
+	//	GPIOC->PUPDR |=  (1U << (2 * BTN_PIN));  // Pull-up
+
+	while (1)
 	{
-		// Enable the register
-		GPIOA->BSRR = LED_PIN_NUM_SET;
-		for(int i=0; i<10000;i++){}
-
-		GPIOA->BSRR = LED_PIN_NUM_REST;
-		for(int i=0; i<10000;i++){}
+		// Checking if Button is pressed, turn on LED, otherwise turn it off
+		if (!(GPIOC->IDR & BTN_MASK)) {
+			// Button is pressed (active-low)
+			GPIOA->BSRR = LED_ON;
+		} else {
+			GPIOA->BSRR = LED_OFF;
+		}
 	}
 
 	return 0;
