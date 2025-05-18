@@ -28,14 +28,16 @@ int main(void)
 	RCC->AHBENR |= GPIOAEN;
 	RCC->AHBENR |= GPIOCEN;
 
-	 // Configure GPIOA-PIN5 as Output
-	 GPIOA->MODER |= (1U<<10);  // MODER5
-	 GPIOA->MODER &=~ (1U<<11);
+	// Configure PA5 as output
+	GPIOA->MODER &= ~(3U << (2 * LED_PIN));  // Clear MODER bits
+	GPIOA->MODER |=  (1U << (2 * LED_PIN));  // Set as output
 
-	 //  Config GPIOC-PIN13 as Input
-	 GPIOC->MODER &=~ (1U<<26);
-	 GPIOC->MODER &=~ (1U<<27);
+	// Configure PC13 as input
+	GPIOC->MODER &= ~(3U << (2 * BTN_PIN));
 
+	//	// Optional: Enable pull-up on PC13
+	//	GPIOC->PUPDR &= ~(3U << (2 * BTN_PIN));
+	//	GPIOC->PUPDR |=  (1U << (2 * BTN_PIN));  // Pull-up
 
 	while (1)
 	{
