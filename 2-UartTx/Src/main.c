@@ -1,104 +1,68 @@
 #include "stm32f0xx.h"
 
+// Define GPIOA clock enable macro
+#define GPIOAEN    (1U<<17)   // Bit 17: I/O port A clock enable
+#define UART2EN    (1U<<17)   // Bit 17: USART2 clock enable
 
-//define GPIOA for USART
-#define GPIOAEN
+// Baudrate calculation (for 9600 baud with 8 MHz PCLK)
+#define SYS_FREQ     8000000
+#define APB1_CLK     SYS_FREQ
+#define UART_BAUDRATE 9600
 
-// Enable the UART2 Tx PIN PA2
-
-// Enable the UART2 Rx PIN PA3
-
-#define
-
+static void uart_tx_init(void);
+static uint16_t compute_uart_bd(uint32_t periph_clk, uint32_t baudrate);
 
 int main(void)
 {
+    uart_tx_init();
 
-	// find out which IO pins that activate the USART
+    while (1)
+    {
+        // Wait until TXE (Transmit data register empty) flag is set
+        while (!(USART2->ISR & USART_ISR_TXE)) {}
 
-	// Configure UART Pins
+        // Send a byte (for example, ASCII 'A')
+        USART2->TDR = 'A';
 
+        // Wait a bit before sending next byte
+        for (volatile int i = 0; i < 100000; i++);
+    }
 
-
-	return 0;
-
+    return 0;
 }
 
-void uart_tx_init(void)
+static void uart_tx_init(void)
 {
+    /************ Configure UART GPIO pins ************/
+    // Enable clock access to GPIOA
+    RCC->AHBENR |= GPIOAEN;
 
+    // Set PA2 and PA3 to alternate function mode
+    GPIOA->MODER &= ~((1U<<4) | (1U<<6));  // Clear bits
+    GPIOA->MODER |=  ((1U<<5) | (1U<<7));  // Set bits: 10 = AF mode for PA2, PA3
 
-	// APB peripheral reset register 1 (RCC_APB1RSTR)
-	// Set bit 17 for USART2 RST
-	/*
-	 * Bit 17 USART2RST: USART2 reset
-	 *	Set and cleared by software.
-	 *  0: No effect
-	 *	1: Reset USART2
-	 *
-	 * */
+    // Set AF1 (USART2) for PA2 and PA3
+    GPIOA->AFR[0] &= ~((0xF << 8) | (0xF << 12));  // Clear bits for AFRL PA2, PA3
+    GPIOA->AFR[0] |=  ((1 << 8) | (1 << 12));      // AF1 for USART2 on PA2 and PA3
 
+    /************ Configure USART2 module ************/
+    // Enable clock access to USART2
+    RCC->APB1ENR |= UART2EN;
 
-	//RCC_APB1ENR)
-	// set bit 17 for USART2 EN
-	/*
-	* USART2EN: USART2 clock enable
-	* Set and cleared by software.
-	* 0: USART2 clock disabled
-	* 1: USART2 clock enabled	
-	*/
+    // Disable USART before configuration
+    USART2->CR1 &= ~USART_CR1_UE;
 
-	//RCC_CFGR3) 
-	/* bits 17 - 16 USART2SW[1:0]: 
-	* USART2SW[1:0]: USART2 clock source selection (available only on STM32F07x and
-	* 	STM32F09x devices)
-	* 	This bit is set and cleared by software to select the USART2 clock source.
-	* 	00: PCLK selected as USART2 clock source (default)
-	* 	01: System clock (SYSCLK) selected as USART2 clock
-	* 	10: LSE clock selected as USART2 clock
-	* 	11: HSI clock selected as USART2 clock
- 	*/
+    // Set baudrate
+    USART2->BRR = compute_uart_bd(APB1_CLK, UART_BAUDRATE);
 
- 	// RCC_APB1RSTR  --> bit 17 = USART2RST
-	// RCC_APB1ENR   -->  bit 17 = USART2EN
-	// RCC_CFGR3 	 -->   Bits 17 / 16 = USART2SW[1:0]
+    // Set word length to 8 bits, no parity, 1 stop bit (default)
+    USART2->CR1 = USART_CR1_TE | USART_CR1_RE;  // Enable transmitter and receiver
 
-	// Peripheral alternate function:
-	// – Connect the I/O to the desired AFx in one of the GPIOx_AFRL or GPIOx_AFRH
-	// register.
-	// – Select the type, pull-up/pull-down and output speed via the GPIOx_OTYPER,
-	// GPIOx_PUPDR and GPIOx_OSPEEDER registers, respectively.
-	// – Configure the desired I/O as an alternate function in the GPIOx_MODER register.
+    // Enable USART2
+    USART2->CR1 |= USART_CR1_UE;
+}
 
-	// When the I/O port is programmed as alternate function:
-	// • The output buffer can be configured in open-drain or push-pull mode
-	// • The output buffer is driven by the signals coming from the peripheral (transmitter
-	// enable and data)
-	// • The Schmitt trigger input is activated
-	// The weak pull-up and pull-down resistors are activated or not depending on the value
-	// in the GPIOx_PUPDR register
-	// • The data present on the I/O pin are sampled into the input data register every AHB
-	// clock cycle
-	// • A read access to the input data register gets the I/O state
-	
-
-
-
-	/** Configure teht e uart gpio pin **/
-	// Enable the clock access the the gpioa
-	RCC->AHBENR |= GPIOAEN;
-
-	// Set PA2 mode to the alternate function
-	GPIOA->MODER &=~ (1U<<16);
-
-	// Set the PA2 alternate funtion type to UART_Tx (AF07)
-	// looking to the alternate function map table and get the AFL AFR registers _> set it in GPIO_AFRL register 
-
-	// Config the usart module
-	// Enable the clock acces to the UART
-	// Config baudrate
-	//config the transfer direction
-
-	//Enalbe the UART module
-
+static uint16_t compute_uart_bd(uint32_t periph_clk, uint32_t baudrate)
+{
+    return (periph_clk + (baudrate/2U)) / baudrate;
 }
