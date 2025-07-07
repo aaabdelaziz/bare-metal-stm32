@@ -55,3 +55,22 @@ void adc1_init(void)
 }
 
 
+
+/**
+ * @brief Configure ADC channel (e.g., Channel 1 for PA1)
+ */
+void adc1_channel_config(void)
+{
+    ADC_ChannelConfTypeDef sConfig = {0};
+
+    /* Configure the selected ADC channel */
+    sConfig.Channel = ADC_CHANNEL_1;                      // Channel 1 (PA1)
+    sConfig.Rank = ADC_RANK_CHANNEL_NUMBER;               // Rank in the sequence
+    sConfig.SamplingTime = ADC_SAMPLETIME_55CYCLES_5;     // Sampling time
+
+    if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+    {
+        /* Configuration Error */
+        Error_Handler();
+    }
+}
