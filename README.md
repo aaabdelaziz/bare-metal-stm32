@@ -11,7 +11,7 @@ This repository contains a collection of bare metal device drivers designed for 
 - **Portability**: Easy to adapt and integrate into different projects using STM32F0xx microcontrollers.
 - **Documentation and Examples**: Each driver includes usage examples and comprehensive documentation for easy understanding and implementation.
 
-## Supported Device Drivers
+## Target Device Drivers to be supported
 
 1. **GPIO Driver**: Control and configure general-purpose input/output pins for digital I/O operations.
 2. **UART Driver**: Provide capabilities for serial communication, supporting various baud rates and configurations.
