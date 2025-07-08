@@ -36,7 +36,8 @@ Include steps needed to set up the project.
 # Usage: 
 You can run the codes under STM32Cube IDE.
 
-# License: Include licensing information if applicable.
+# License:
+Codes are under MIT License.
 
 # Contact Information: 
 Ahmed Abdelaziz (aiaaziz.sw@gmail.com)
