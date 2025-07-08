@@ -30,18 +30,13 @@ This repository contains a collection of bare metal device drivers designed for 
 
 To get started with this project, clone this repository and include the driver files in your embedded application. Refer to the documentation provided for detailed instructions on how to integrate and utilize each driver.
 
-## Contribution
-
-Contributions are welcome! Feel free to submit issues or pull requests if you would like to enhance the project or fix any bugs
-
-
-#Installation Instructions: 
+# Installation Instructions: 
 Include steps needed to set up the project.
 
-#Usage: 
-Describe how to use your code with examples.
+# Usage: 
+You can run the codes under STM32Cube IDE.
 
-#License: Include licensing information if applicable.
+# License: Include licensing information if applicable.
 
-#Contact Information: 
+# Contact Information: 
 Ahmed Abdelaziz (aiaaziz.sw@gmail.com)
