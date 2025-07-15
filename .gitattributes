@@ -18,6 +18,6 @@ Inc/* linguist-language=C
 # Mark startup assembly as generated to reduce its weight
 Startup/* linguist-generated
 
-# Optional: exclude IDE/debug folders from language stats
-.metadata/* linguist-vendored
-.settings/* linguist-vendored
+# # Optional: exclude IDE/debug folders from language stats
+# .metadata/* linguist-vendored
+# .settings/* linguist-vendored
