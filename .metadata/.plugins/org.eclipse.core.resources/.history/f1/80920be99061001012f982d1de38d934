@@ -1,0 +1,15 @@
+/*
+ * adc.h
+ *
+ *  Created on: Jul 15, 2025
+ *      Author: ahmedabdelaziz
+ */
+
+#ifndef ADC_H_
+#define ADC_H_
+
+
+
+static void pa1_adc_init();
+
+#endif /* ADC_H_ */
