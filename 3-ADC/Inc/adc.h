@@ -8,11 +8,10 @@
 #ifndef ADC_H_
 #define ADC_H_
 
-
-#define GPIOAEN 		(1U<<0)
-#define ADC1EN 			(1U<<9)    // Enable ADC1 connected to APB bus
+#include "stm32f0xx.h"
 
 
-static void pa1_adc_init();
+void pa1_adc_init();
+void adc_internal_temp_read();
 
 #endif /* ADC_H_ */

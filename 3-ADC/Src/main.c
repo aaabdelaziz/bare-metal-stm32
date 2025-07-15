@@ -1,14 +1,16 @@
-#include "stm32f0xx.h"
 #include "adc.h"
-
-// Define GPIOA clock enable macro
-
-
 
 
 int main(void)
 {
 
+	// Initialize ADC to read from internal temperature sensor
+	pa1_adc_init();
+
+	while(1)
+	{
+		adc_internal_temp_read();
+	}
 
     return 0;
 }
