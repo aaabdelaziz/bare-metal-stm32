@@ -1,0 +1,13 @@
+/*
+ * adc.c
+ *
+ *  Created on: Jul 15, 2025
+ *      Author: ahmedabdelaziz
+ */
+#include "adc.h"
+
+static void pa1_adc_init()
+{
+
+	/***** Config the ADC GPIO Pin/
+}

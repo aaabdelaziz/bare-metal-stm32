@@ -1,7 +1,7 @@
 /*
  * adc.h
  *
- *  Created on: Jul 8, 2025
+ *  Created on: Jul 15, 2025
  *      Author: ahmedabdelaziz
  */
 
@@ -10,11 +10,8 @@
 
 #include "stm32f0xx.h"
 
-#define GPIOEN      (1U<<0)
-#define ADC1EN      (1U<<8)
 
-void pa1_adc_init(void);
-
-ADC_TypeDef hadc1;
+void pa1_adc_init();
+void adc_internal_temp_read();
 
 #endif /* ADC_H_ */

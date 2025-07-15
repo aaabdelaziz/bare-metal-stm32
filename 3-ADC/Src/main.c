@@ -1,19 +1,17 @@
-#include "stm32f0xx.h"
 #include "adc.h"
-
-// Define GPIOA clock enable macro
-#define GPIOAEN    (1U<<17)   // Bit 17: I/O port A clock enable
 
 
 int main(void)
 {
 
-    while (1)
-    {
+	// Initialize ADC to read from internal temperature sensor
+	pa1_adc_init();
 
-
-
-    }
+	while(1)
+	{
+		adc_internal_temp_read();
+	}
 
     return 0;
 }
+

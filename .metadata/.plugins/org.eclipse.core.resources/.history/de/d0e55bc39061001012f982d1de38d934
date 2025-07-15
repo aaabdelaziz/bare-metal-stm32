@@ -1,0 +1,19 @@
+#include "stm32f0xx.h"
+
+// Define GPIOA clock enable macro
+
+
+static void pa1_adc_init();
+
+
+int main(void)
+{
+
+
+    return 0;
+}
+
+static void pa1_adc_init()
+{
+
+}
