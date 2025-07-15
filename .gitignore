@@ -32,7 +32,7 @@ Thumbs.db
 
 # CubeIDE metadata (can be kept or excluded if desired)
 # Uncomment below to keep metadata (useful for full IDE restore)
-# !.metadata/
+.metadata/
 
 # CubeMX auto-generated folders (optional, if used)
 # !Core/
