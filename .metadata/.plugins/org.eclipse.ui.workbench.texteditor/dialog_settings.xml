@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="hasShownOverlayPopupBefore" value="true"/>
+	<item key="replaceBarOpen" value="false"/>
+	<list key="searchhistory">
+		<item value="libc"/>
+		<item value="libc_nano"/>
+		<item value="libc_nano.a"/>
+		<item value="USART2"/>
+		<item value="adc1_channel_config"/>
+		<item value="adc"/>
+		<item value="AHBENR"/>
+		<item value="rcc"/>
+		<item value="RC"/>
+		<item value="RCC"/>
+		<item value="GPIOA_BASE"/>
+	</list>
+</section>
