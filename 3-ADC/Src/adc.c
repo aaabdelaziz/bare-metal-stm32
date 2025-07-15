@@ -1,0 +1,23 @@
+/*
+ * adc.c
+ *
+ *  Created on: Jul 15, 2025
+ *      Author: ahmedabdelaziz
+ */
+#include "adc.h"
+
+static void pa1_adc_init()
+{
+
+	/***** Config the ADC GPIO Pin *********/
+
+	/* Enable clock acess to GPIOA */
+	//RCC_APB2ENR_ADCEN |= ADC1EN;
+
+	/* Set PA1 analog mode */
+	/* Configure ADC Module */
+	/* Conversion sequence start */
+	/* Conversion sequence Length */
+	/* Enable ADC Module */
+
+}
